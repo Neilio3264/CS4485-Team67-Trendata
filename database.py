@@ -15,6 +15,18 @@ try:
     )
 
     print(mydb)
+    
+    mycursor = mydb.cursor()
+    
+    def get_data():
+        statement = "SELECT * FROM customers"
+        mycursor.execute(statement)
+        for (customerNumber) in mycursor:
+            print(f"Successfully retrieved {customerNumber}")
+    
+    get_data()
+    
+    mydb.close()
 except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password")
