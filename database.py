@@ -1,9 +1,3 @@
-##################### FOR ADDING SEPARATE INCLUDE PATH ######################
-# only required if module was downloaded to another path
-import sys
-sys.path.append('/home/neil/.local/lib/python3.8/site-packages')
-#############################################################################
-
 import mysql.connector
 
 try:
