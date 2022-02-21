@@ -2,6 +2,7 @@
 import mariadb
 import sys
 import pandas as pd
+from IPython.display import display
 from sqlalchemy import create_engine
 
 from config.credentials import user
@@ -19,8 +20,6 @@ try:
         database="classicmodels"
     )
 
-    print(conn)
-
 #error message
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
@@ -33,8 +32,8 @@ df.to_sql(name='zip', con=engine, if_exists='replace', index=False)
 
 
 #display table
-all_tables = pd.read_sql("SHOW tables",conn)
-print(all_tables)
+all_tables = pd.read_sql("SHOW tables", engine)
+print(all_tables.to_string())
 
 
 # Get Cursor
