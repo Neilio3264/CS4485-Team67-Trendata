@@ -4,6 +4,7 @@ import sys
 import pandas as pd
 from sqlalchemy import create_engine
 
+from config.credentials import user
 
 #read xls data into dataframe
 df = pd.read_excel('./data/zip_code_database.xls')
@@ -11,12 +12,14 @@ df = pd.read_excel('./data/zip_code_database.xls')
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
-        user="root", #change to your username
-        password="pass", #change 
-        host="localhost",
+        user=user.username, #change to your username
+        password=user.password, #change 
+        host=user.hostname,
         port=3306,
         database="classicmodels"
     )
+
+    print(conn)
 
 #error message
 except mariadb.Error as e:
@@ -24,12 +27,13 @@ except mariadb.Error as e:
     sys.exit(1)
 
 #Convert DF into mariaDB format
-engine = create_engine('mysql+mysqlconnector://root:pass@127.0.0.1/classicmodels') #change root:pass to your username:password
+engine_string = f"mysql+mysqlconnector://{user.username}:{user.password}@{user.hostname}/classicmodels"
+engine = create_engine(engine_string) #change root:pass to your username:password
 df.to_sql(name='zip', con=engine, if_exists='replace', index=False)
 
 
 #display table
-all_tables = pd.read_sql("show tables",conn)
+all_tables = pd.read_sql("SHOW tables",conn)
 print(all_tables)
 
 

@@ -1,2 +1,5 @@
 .vscode
 .vscode/*
+
+/config/credentials.py
+/config/__pycache__
