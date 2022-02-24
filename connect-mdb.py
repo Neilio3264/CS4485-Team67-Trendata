@@ -2,10 +2,12 @@
 import mariadb
 import sys
 import pandas as pd
-from IPython.display import display
 from sqlalchemy import create_engine
+import json
+import requests
 
 from config.credentials import user
+from config.credentials import nix
 
 #read xls data into dataframe
 df = pd.read_excel('./data/zip_code_database.xls')
@@ -34,18 +36,46 @@ df.to_sql(name='zip', con=engine, if_exists='replace', index=False)
 #display table
 all_tables = pd.read_sql("SHOW tables", engine)
 print(all_tables.to_string())
-
+print()
+print("zip table looks like: ")
+zip_table = pd.read_sql("DESCRIBE zip", engine)
+print(zip_table.to_string)
+print()
 
 # Get Cursor
 cur = conn.cursor()
 
 #Query, can change if need to
-query = f"Select * From zip"
-
+query = """
+SELECT * FROM zip
+ORDER BY RAND()
+LIMIT 1
+"""
 cur.execute(query)
-
 rows = cur.fetchall()
-conn.close()
   
 for row in rows :
     print(row)
+    
+#set lat and long
+latitude = row[12]
+longitude = row[13]
+
+conn.close()
+
+# Nutrition API call
+PARAMS = {
+    'll': f"{latitude},{longitude}",
+    'distance': '5km',
+    'limit': 1
+}
+URL = 'https://trackapi.nutritionix.com/v2/locations'
+CREDENTIALS = {
+    'x-app-id': nix.app_id,
+    'x-app-key': nix.api_key
+}
+
+response = requests.get(url=URL,headers=CREDENTIALS, params=PARAMS)
+data = response.json()
+
+print(data)
