@@ -39,7 +39,11 @@ print(all_tables.to_string())
 print()
 print("zip table looks like: ")
 zip_table = pd.read_sql("DESCRIBE zip", engine)
-print(zip_table.to_string)
+print(zip_table.to_string())
+print()
+print("customer table looks like: ")
+zip_table = pd.read_sql("DESCRIBE customers", engine)
+print(zip_table.to_string())
 print()
 
 # Get Cursor
@@ -47,9 +51,9 @@ cur = conn.cursor()
 
 #Query, can change if need to
 query = """
-SELECT * FROM zip
-ORDER BY RAND()
-LIMIT 1
+SELECT customerName, postalCode, zip.latitude, zip.longitude FROM customers, zip
+WHERE customers.postalCode = zip.zip
+GROUP BY customerName;
 """
 cur.execute(query)
 rows = cur.fetchall()
@@ -58,24 +62,24 @@ for row in rows :
     print(row)
     
 #set lat and long
-latitude = row[12]
-longitude = row[13]
+# latitude = row[12]
+# longitude = row[13]
 
 conn.close()
 
 # Nutrition API call
-PARAMS = {
-    'll': f"{latitude},{longitude}",
-    'distance': '5km',
-    'limit': 1
-}
-URL = 'https://trackapi.nutritionix.com/v2/locations'
-CREDENTIALS = {
-    'x-app-id': nix.app_id,
-    'x-app-key': nix.api_key
-}
+# PARAMS = {
+#     'll': f"{latitude},{longitude}",
+#     'distance': '5km',
+#     'limit': 1
+# }
+# URL = 'https://trackapi.nutritionix.com/v2/locations'
+# CREDENTIALS = {
+#     'x-app-id': nix.app_id,
+#     'x-app-key': nix.api_key
+# }
 
-response = requests.get(url=URL,headers=CREDENTIALS, params=PARAMS)
-data = response.json()
+# response = requests.get(url=URL,headers=CREDENTIALS, params=PARAMS)
+# data = response.json()
 
-print(data)
+# print(data)
