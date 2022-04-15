@@ -9,6 +9,14 @@ import requests
 import io
 import sys
 import pandas as pd
+import numpy as np
+
+
+class credential:
+    def __init__(self, hostname, username, password):
+        self.hostname = hostname
+        self.username = username
+        self.password = password
 
 #API Token
 bearer_token = '20c5175c33ad7781d3e2b37ffa16badb'
@@ -20,10 +28,12 @@ response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 
-"""
+
 
 #pip install fsspec (to get bottom extension to work)
-df = pd.read_json(response.text)
+#df2 = pd.read_json(response.text)
+
+df = pd.read_csv('kidney_disease_train.csv')
 
 # Connect to MariaDB Platform
 try:
@@ -40,12 +50,16 @@ except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
 
+#Data Cleansing + Data set Matching
+clean_df = df.drop_duplicates()
+miss_df = df.isnull()
+
 #Convert DF into mariaDB format
 engine_string = f"mysql+mysqlconnector://{user.username}:{user.password}@{user.hostname}/classicmodels"
 engine = create_engine(engine_string) #change root:pass to your username:password
-df.to_sql(name='kidney-data', con=engine, if_exists='replace', index=False)
+clean_df.to_sql(name='kidney-data', con=engine, if_exists='replace', index=False)
 
-"""
+
 
 
 
