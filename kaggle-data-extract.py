@@ -12,12 +12,6 @@ import pandas as pd
 import numpy as np
 
 
-class credential:
-    def __init__(self, hostname, username, password):
-        self.hostname = hostname
-        self.username = username
-        self.password = password
-
 #API Token
 bearer_token = '20c5175c33ad7781d3e2b37ffa16badb'
 
