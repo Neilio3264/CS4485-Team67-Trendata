@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ggvq_b)n9z*tcnpz7cn)n$472t0%=z5+zy7g+(wl$%ixkjn!_('
+GOOGLE_API_KEY = 'AIzaSyDkZ-hSeaLBqPGI6IOMo6xMzZdoF6DNmP8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
-    'rest_framework'
+    'rest_framework',
+    'address'
 ]
 
 MIDDLEWARE = [
