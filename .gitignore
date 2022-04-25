@@ -3,6 +3,8 @@
 Basic Auth Test/config/credentials.py
 Basic Auth Test/config/__pycache__
 
+trendialysis/__pycache__
+trendialysis/data/__pycache__
 trendialysis/trendialysis/__pycache__
 trendialysis/api/__pycache__
 trendialysis/api/migrations/__pycache__

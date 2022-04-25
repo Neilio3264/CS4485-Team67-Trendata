@@ -1,10 +1,5 @@
 from rest_framework import serializers
-from .models import Room, Patient
-
-class RoomSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Room
-        fields = ('id', 'code', 'host', 'guest_can_pause', 'votes_to_skip', 'created_at')
+from .models import Patient
         
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:

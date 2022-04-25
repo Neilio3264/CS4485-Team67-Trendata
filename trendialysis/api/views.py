@@ -1,12 +1,6 @@
 from rest_framework import generics
-from .serializers import RoomSerializer, PatientSerializer
-from .models import Room, Patient
-
-# Create your views here.
-class RoomView(generics.ListAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
-
+from .serializers import PatientSerializer
+from .models import Patient
 
 class ViewPatients(generics.ListAPIView):
     queryset = Patient.objects.all()
