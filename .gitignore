@@ -1,0 +1,14 @@
+.vscode
+
+Basic Auth Test/config/credentials.py
+Basic Auth Test/config/__pycache__
+
+trendialysis/__pycache__
+trendialysis/data/__pycache__
+trendialysis/trendialysis/__pycache__
+trendialysis/api/__pycache__
+trendialysis/api/migrations/__pycache__
+trendialysis/frontend/__pycache__
+trendialysis/frontend/migrations/__pycache__
+
+trendialysis/frontend/node_modules
