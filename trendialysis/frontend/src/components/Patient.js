@@ -43,21 +43,23 @@ export default class patient extends Component {
 
   render() {
     return (
-      <>
-        <div class="table table-striped table-condensed table-bordered table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Patient ID</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Age</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Phone</th>
-            </tr>
-          </thead>
-          <tbody>{this.updateTable()}</tbody>
+      <div class="container">
+        <div class="table-responsive">
+          <table class="table table-striped table-condensed table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Patient ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+              </tr>
+            </thead>
+            <tbody>{this.updateTable()}</tbody>
+          </table>
         </div>
-      </>
+      </div>
     );
   }
 }
