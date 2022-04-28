@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Patient from "./Patient";
+import qualityofLife from "./qualityofLife";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -22,6 +24,7 @@ export default class HomePage extends Component {
           </Route>
           <Route exact path="/patient" component={Patient}></Route>
           {/* <Route path="/patient/:patientId" component={Patient}></Route> */}
+          <Route exact path="/qualityofLife" component={qualityofLife}></Route>
         </Switch>
       </Router>
     );

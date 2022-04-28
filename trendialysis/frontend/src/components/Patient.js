@@ -11,24 +11,24 @@ export default class patient extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      patients: []
-    }
+      patients: [],
+    };
     this.getPatientDetails();
   }
 
   getPatientDetails() {
-    fetch('/api/get-patients').then((response) => 
-      response.json()
-    ).then((data) => {
-      this.setState({
-        patients: data
-      })
-    });
-    console.log("This is the patient array: " + this.state.patients)
+    fetch("/api/get-patients")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          patients: data,
+        });
+      });
+    console.log("This is the patient array: " + this.state.patients);
   }
 
   updateTable() {
-    const data = this.state.patients.map(patient => (
+    const data = this.state.patients.map((patient) => (
       <tr key={patient.patient_id}>
         <th scope="row">{patient.patient_id}</th>
         <td>{patient.first_name}</td>
@@ -44,7 +44,7 @@ export default class patient extends Component {
   render() {
     return (
       <>
-        <div class="table table-striped table-bordered table-hover">
+        <div class="table table-striped table-condensed table-bordered table-hover">
           <thead>
             <tr>
               <th scope="col">Patient ID</th>
@@ -55,9 +55,7 @@ export default class patient extends Component {
               <th scope="col">Phone</th>
             </tr>
           </thead>
-          <tbody>
-            {this.updateTable()}
-          </tbody>
+          <tbody>{this.updateTable()}</tbody>
         </div>
       </>
     );
