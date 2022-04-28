@@ -11,28 +11,34 @@ table {
   height: 100px;
 }
 thead {
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
-thead, tbody {
+thead,
+tbody {
   display: block;
 }
 tbody {
   overflow-y: scroll;
-  overflow-x: hidden;
+  scrollbar-color: lightblue;
   height: 100vh;
+  scrollbar-width: thin;
 }
 
-td, th {
+td,
+th {
   min-width: 100px;
   height: 25px;
   border: dashed 1px lightblue;
-  overflow:hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
-
 }
-.container{
-width:100%;
+.container {
+  width: 100%;
+}
+
+[data-href] {
+  cursor: pointer;
 }
 
 #main {

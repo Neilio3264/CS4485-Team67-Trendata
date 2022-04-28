@@ -15,7 +15,13 @@ export default class patient extends Component {
     };
     this.getPatientDetails();
   }
-
+  jqueryPart() {
+    this.jqueryPart(document).ready(function ($) {
+      $("*[data-href]").on("click", function () {
+        window.location = $(this).data("./qualityofLife");
+      });
+    });
+  }
   getPatientDetails() {
     fetch("/api/get-patients")
       .then((response) => response.json())
@@ -31,7 +37,7 @@ export default class patient extends Component {
     const data = this.state.patients.map((patient) => (
       <tr key={patient.patient_id}>
         <th scope="row">{patient.patient_id}</th>
-        <td>{patient.first_name}</td>
+        <td data-href="./qualityofLife">{patient.first_name}</td>
         <td>{patient.last_name}</td>
         <td>{patient.age}</td>
         <td>{patient.gender}</td>
