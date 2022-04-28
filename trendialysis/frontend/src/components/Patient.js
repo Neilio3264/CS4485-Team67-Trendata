@@ -18,7 +18,7 @@ export default class patient extends Component {
   jqueryPart() {
     this.jqueryPart(document).ready(function ($) {
       $("*[data-href]").on("click", function () {
-        window.location = $(this).data("./qualityofLife");
+        window.location = $(this).data("/qualityofLife");
       });
     });
   }
@@ -37,7 +37,7 @@ export default class patient extends Component {
     const data = this.state.patients.map((patient) => (
       <tr key={patient.patient_id}>
         <th scope="row">{patient.patient_id}</th>
-        <td data-href="./qualityofLife">{patient.first_name}</td>
+        <td data-href="/qualityofLife">{patient.first_name}</td>
         <td>{patient.last_name}</td>
         <td>{patient.age}</td>
         <td>{patient.gender}</td>
@@ -49,23 +49,21 @@ export default class patient extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="table-responsive">
-          <table class="table table-striped table-condensed table-bordered table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Patient ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Phone</th>
-              </tr>
-            </thead>
-            <tbody>{this.updateTable()}</tbody>
-          </table>
-        </div>
-      </div>
+      <table class="table table-responsive table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Patient ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Phone</th>
+            <th scope="col">$$$</th>
+            <th scope="col">$$$</th>
+          </tr>
+        </thead>
+        <tbody>{this.updateTable()}</tbody>
+      </table>
     );
   }
 }
