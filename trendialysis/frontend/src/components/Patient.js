@@ -14,7 +14,17 @@ export default class patient extends Component {
       patients: [],
     };
     this.getPatientDetails();
+
+    this.print = this.print.bind(this);
   }
+
+  print() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll("tr[data-href]");
+      console.log(rows);
+    })
+  }
+
   jqueryPart() {
     this.jqueryPart(document).ready(function ($) {
       $("*[data-href]").on("click", function () {
@@ -30,18 +40,17 @@ export default class patient extends Component {
           patients: data,
         });
       });
-    console.log("This is the patient array: " + this.state.patients);
   }
 
   updateTable() {
     const data = this.state.patients.map((patient) => (
-      <tr key={patient.patient_id}>
-        <th scope="row">{patient.patient_id}</th>
-        <td data-href="/qualityofLife">{patient.first_name}</td>
-        <td>{patient.last_name}</td>
-        <td>{patient.age}</td>
-        <td>{patient.gender}</td>
-        <td>{patient.phone}</td>
+      <tr key={patient.patient_id} className="row" data-href="https://www.google.com/">
+        <th className="col">{patient.patient_id}</th>
+        <td className="col" data-href="/qualityofLife">{patient.first_name}</td>
+        <td className="col">{patient.last_name}</td>
+        <td className="col">{patient.age}</td>
+        <td className="col">{patient.gender}</td>
+        <td className="col">{patient.phone}</td>
       </tr>
     ));
     return data;
@@ -49,21 +58,21 @@ export default class patient extends Component {
 
   render() {
     return (
-      <table class="table table-responsive table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Patient ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Age</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Phone</th>
-            <th scope="col">$$$</th>
-            <th scope="col">$$$</th>
-          </tr>
-        </thead>
-        <tbody>{this.updateTable()}</tbody>
-      </table>
+      <div className="container">
+        <table className="table table-responsive table-striped table-bordered table-hover">
+          <thead>
+            <tr className="row">
+              <th className="col">Patient ID</th>
+              <th className="col">First</th>
+              <th className="col">Last</th>
+              <th className="col">Age</th>
+              <th className="col">Gender</th>
+              <th className="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>{this.updateTable()}</tbody>
+        </table>
+      </div>
     );
   }
 }

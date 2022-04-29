@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component, StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import HomePage from "./HomePage";
 import { Navigation } from "./Navigation";
 
@@ -10,7 +10,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Navigation />
         <HomePage />
       </div>
@@ -19,4 +19,9 @@ export default class App extends Component {
 }
 
 const appDiv = document.getElementById("app");
-render(<App />, appDiv);
+const app = createRoot(appDiv);
+app.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)

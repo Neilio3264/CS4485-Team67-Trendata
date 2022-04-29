@@ -6,36 +6,6 @@ body {
   padding: 0;
 }
 
-table {
-  border-collapse: collapse;
-  overflow-x: scroll;
-  height: 100%;
-}
-thead {
-  background-color: #efefef;
-}
-thead,
-tbody {
-  display: grid;
-}
-tbody {
-  overflow-y: scroll;
-  height: 100vh;
-}
-
-td,
-th {
-  min-width: 100px;
-  height: 25px;
-  border: dashed 1px lightblue;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100px;
-}
-.container {
-  width: 100%;
-}
-
 [data-href] {
   cursor: pointer;
 }

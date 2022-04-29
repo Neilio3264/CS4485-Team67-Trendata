@@ -7,30 +7,30 @@ export class Navigation extends Component {
 
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="#" class="navbar-brand mb-0 h1">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="#" className="navbar-brand mb-0 h1">
           <img
-            class="d-inline-block align-top"
+            className="d-inline-block align-top"
             src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
             width="30"
             height="30"
           />
           Trendialysis
         </a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav">
-            <li lcass="nav-item active">
-              <a href="/" class="nav-link">
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <a href="/" className="nav-link">
                 Home
               </a>
             </li>
-            <li lcass="nav-item active">
-              <a href="/patient" class="nav-link">
+            <li className="nav-item active">
+              <a href="/patient" className="nav-link">
                 Patient info
               </a>
             </li>
-            <li lcass="nav-item active">
-              <a href="/qualityofLife" class="nav-link">
+            <li className="nav-item active">
+              <a href="/qualityofLife" className="nav-link">
                 Quality of Life
               </a>
             </li>
