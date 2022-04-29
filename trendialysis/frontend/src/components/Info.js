@@ -26,17 +26,18 @@ export default class info extends Component {
         appetite: "good",
         pedal_edema: "no",
         anemia: "no",
-        classification: "ckd"
+        classification: "ckd",
     };
     this.patientId = this.props.match.params.patientId;
     this.getPatientDetails();
   }
 
   getPatientDetails() {
-    fetch("/api/get-patient" + "?patient_id=" + this.patientId)
+    fetch("/api/get-metrics" + "?patient_id=" + this.patientId)
       .then((response) => response.json())
       .then((data) => {
-        this.state = {
+          console.log(data);
+        this.setState({
             Dias_blood_pressure: data.Dias_blood_pressure,
             ur_specific_gravity: data.ur_specific_gravity,
             ur_albumin: data.ur_albumin,
@@ -59,8 +60,8 @@ export default class info extends Component {
             appetite: data.appetite,
             pedal_edema: data.pedal_edema,
             anemia: data.anemia,
-            classification: data.classification
-        };
+            classification: data.classification,
+        });
       });
   }
 
