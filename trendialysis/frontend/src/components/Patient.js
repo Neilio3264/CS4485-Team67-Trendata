@@ -1,11 +1,4 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  Switch,
-} from "react-router-dom";
 
 export default class patient extends Component {
   constructor(props) {
