@@ -1,6 +1,6 @@
 from rest_framework import generics, status
-from .serializers import PatientSerializer, HealthMetricsSerializer, QualityOfLifeSerializer, CitySerializer
-from .models import Patient, HealthMetrics, QualityOfLife, Cities
+from .serializers import PatientSerializer, HealthMetricsSerializer, QualityOfLifeSerializer, CitySerializer, CreatinineHistorySerializer
+from .models import Patient, HealthMetrics, QualityOfLife, Cities, CreatinineHistory
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -28,6 +28,20 @@ class GetPatient(APIView):
             patient = Patient.objects.filter(patient_id=patient_id)
             if len(patient) > 0:
                 return Response(PatientSerializer(patient[0]).data, status=status.HTTP_200_OK)
+            return Response({'Patient Not Found': 'Invalid Patient ID'}, status=status.HTTP_404_NOT_FOUND)
+        
+        return Response({'Bad Request': 'PatientId parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+
+class GetCreatinine(APIView):
+    serializer_class = CreatinineHistorySerializer
+    lookup_url_kwarg = 'patient_id'
+    
+    def get(self, request, format=None):
+        patient_id = request.GET.get(self.lookup_url_kwarg)
+        if patient_id != None:
+            patient = CreatinineHistory.objects.filter(patient_id=patient_id)
+            if len(patient) > 0:
+                return Response(CreatinineHistorySerializer(patient, many=True).data, status=status.HTTP_200_OK)
             return Response({'Patient Not Found': 'Invalid Patient ID'}, status=status.HTTP_404_NOT_FOUND)
         
         return Response({'Bad Request': 'PatientId parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)

@@ -51,8 +51,8 @@ export default class patient extends Component {
 
   render() {
     return (
-      <div className="container">
-        <table className="table table-responsive table-striped table-bordered table-hover">
+      <div className="container table-responsive">
+        <table className="table table-striped table-bordered table-hover">
           <thead>
             <tr className="row">
               <th className="col">Patient ID</th>

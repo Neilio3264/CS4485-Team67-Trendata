@@ -16,16 +16,6 @@ export default class qualityofLife extends Component {
     });
   }
 
-  onSubmitForm(id) {
-    console.log(id)
-    if (id != '')
-    {
-      this.props.history.push('/patient/' + id);
-    }
-    else
-      return;
-  }
-
   render() {
     const { items } = this.state;
 
@@ -41,7 +31,7 @@ export default class qualityofLife extends Component {
         </div>
         <div>
           <Link to={"/patient/" + this.state.patient_id}>
-            <button className="btn btn-primary">Enter</button>
+            <button className="btn btn-primary" onClick={this.onSubmitForm}>Enter</button>
           </Link>
         </div>
       </div>

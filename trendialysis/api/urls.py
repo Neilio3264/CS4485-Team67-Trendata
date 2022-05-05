@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ViewPatients, CreatePatients, GetPatient, GetPatients, GetMetrics, GetQuality, GetCity
+from .views import ViewPatients, CreatePatients, GetPatient, GetPatients, GetMetrics, GetQuality, GetCity, GetCreatinine
 
 urlpatterns = [
     path('view/', ViewPatients.as_view()),
@@ -8,5 +8,6 @@ urlpatterns = [
     path('get-patients', GetPatients.as_view()),
     path('get-metrics', GetMetrics.as_view()),
     path('get-quality', GetQuality.as_view()),
-    path('get-city', GetCity.as_view())
+    path('get-city', GetCity.as_view()),
+    path('get-history', GetCreatinine.as_view())
 ]

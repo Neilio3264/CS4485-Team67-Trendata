@@ -25,7 +25,7 @@ export default class HomePage extends Component {
           </Route>
           <Route exact path="/patient" component={Patient}></Route>
           <Route path="/patient/:patientId" component={info}></Route>
-          <Route exact path="/qualityofLife" component={qualityofLife}></Route>
+          <Route path="/qualityofLife" component={qualityofLife}></Route>
         </Switch>
       </Router>
     );
